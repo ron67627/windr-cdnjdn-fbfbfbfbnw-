@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Detection</title>
+</head>
+<body>
+
+<script>
+(function () {
+
+    const userAgent = navigator.userAgent || "";
+
+    // Apple device detection
+    const isApple =
+        /iPhone|iPad|iPod|Macintosh|Mac OS X/i.test(userAgent) ||
+        (navigator.platform === "MacIntel" &&
+         navigator.maxTouchPoints > 1);
+
+    // Windows detection
+    const isWindows = /Windows/i.test(userAgent);
+
+    // Redirect to specific folders
+    if (isApple) {
+        window.location.replace("./apple/index.html");
+    }
+    else if (isWindows) {
+        window.location.replace("./windows/index.html");
+    }
+    else {
+        // Default folder for Android and other devices
+        window.location.replace("./windows/index.html");
+    }
+
+})();
+</script>
+
+</body>
+</html>
